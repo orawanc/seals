@@ -3,7 +3,26 @@ namespace Seals\Web;
 
 use AltoRouter;
 
-class Route {        
+class Route {     
+    
+    /**
+     * load
+     * 
+     * @param {string} $path
+     */
+    public static function load($path) {
+        foreach (scandir($path) as $file) {
+            if (is_dir($file)) {
+                self::load($file);
+            } else {
+                $ext = pathinfo($file, PATHINFO_EXTENSION);
+                if ($ext==".php") {
+                    require_once($path . DIRECTORY_SEPARATOR . $file);
+                }
+            }
+        }
+    }
+    
     /**
      * map
      * 

@@ -1,10 +1,26 @@
-<?
+<?php
+
 namespace Seals\Web;
 
 use Philo\Blade\Blade;
 
 class View
 {
+
+    public static $viewsPath="";
+    public static $cachePath="";
+
+    /**
+     * setBaePath
+     * 
+     * @param $views
+     * @param $cache
+     */
+    public static function setBasePath($views,$cache) {
+        self::$viewsPath = $views;
+        self::$cachePath = $cache;
+    }
+
     /**
      * views
      * 
@@ -13,12 +29,10 @@ class View
      * @return mixed
      */
     public static function render($path, array $data = []) {        
-        $views = __DIR__ . '../../../resources/views';
-        $cache = __DIR__ . '../../../bootstrap/cache';
-    
-        $blade = new Blade($views,$cache);
-    
-        echo $blade->views()->make($path,$data)->render();
+        
+        $blade = new Blade(self::$viewsPath,self::$cachePath);
+            
+        echo $blade->view()->make($path,$data)->render();
     }        
 }
 
