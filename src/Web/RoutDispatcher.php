@@ -1,7 +1,7 @@
 <?php
 namespace Seals\Web;
 
-use AltoRouter;
+use \AltoRouter;
 
 class RouteDispatcher {    
     protected $match;

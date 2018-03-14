@@ -1,6 +1,8 @@
 <?php
 namespace Seals\Web;
 
+use \AltoRouter;
+
 class Route {        
     /**
      * map
