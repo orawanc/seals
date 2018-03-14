@@ -30,7 +30,7 @@ class Route {
             }
         }else{
             header($_SERVER['SERVER_PROTOCOL'].'404 Not Found');
-            views('errors/404');
+            View::render('errors/404');
         }
     }
 

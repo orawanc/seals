@@ -3,7 +3,7 @@ namespace Seals\Web;
 
 use Philo\Blade\Blade;
 
-class Views 
+class View
 {
     /**
      * views
@@ -16,7 +16,7 @@ class Views
         $views = __DIR__ . '../../../resources/views';
         $cache = __DIR__ . '../../../bootstrap/cache';
     
-        $blade = new Blade($view,$cache);
+        $blade = new Blade($views,$cache);
     
         echo $blade->views()->make($path,$data)->render();
     }        
