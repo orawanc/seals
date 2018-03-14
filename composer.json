@@ -1,0 +1,24 @@
+{
+    "name": "Seals",
+    "description": "Seals Framework",
+    "keywords": ["php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Orawan C.",
+            "email": "orawanc7@gmail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=5.4"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "5.2.*"
+    },
+	"autoload": {
+        "psr-4": {
+            "Seals\\": "src/"
+        }
+    }
+}
