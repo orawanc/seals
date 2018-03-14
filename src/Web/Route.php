@@ -5,38 +5,24 @@ use AltoRouter;
 
 class Route {     
     
+    public static $router = "";
+
     /**
      * load
      * 
      * @param {string} $path
      */
-    public static function load($path) {
-        foreach (scandir($path) as $file) {
-            if (is_dir($file)) {
-                self::load($file);
-            } else {
-                $ext = pathinfo($file, PATHINFO_EXTENSION);
-                if ($ext==".php") {
-                    require_once($path . DIRECTORY_SEPARATOR . $file);
-                }
-            }
-        }
-    }
-    
-    /**
-     * map
-     * 
-     * @param {string} method
-     * @param {string} route
-     * @param {string} target
-     * @param {string} name
-     */
-    public static function map($method,$route,$target,$name) {        
-        $router = new AltoRouter();
-        $router->map($method,$route,$target,$name);
-    
+    public static function load($path) {        
+        self::$router = new AltoRouter();
+
+        $files = preg_grep('/\.php$/', scandir($path));
+
         
-        $match = $router->match();
+        foreach ($files as $file  => $value) {                                    
+            require_once($path . DIRECTORY_SEPARATOR . $value);
+        }
+
+        $match = self::$router->match();
         
         if($match){
             list($controller, $controllermethod) = explode('@', $match['target']);            
@@ -52,7 +38,18 @@ class Route {
             View::render('errors/404');
         }
     }
-
+    
+    /**
+     * map
+     * 
+     * @param {string} method
+     * @param {string} route
+     * @param {string} target
+     * @param {string} name
+     */
+    public static function map($method,$route,$target,$name) {                
+        self::$router->map($method,$route,$target,$name);
+    }    
 }
 
 ?>

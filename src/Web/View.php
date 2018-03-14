@@ -18,7 +18,7 @@ class View
      */
     public static function setBasePath($views,$cache) {
         self::$viewsPath = $views;
-        self::$cachePath = $cache;
+        self::$cachePath = $cache;                
     }
 
     /**
