@@ -1,5 +1,5 @@
 <?php
-namespace Seals\Web\Language;
+namespace Seals\Web;
 
 class Language {
     public static $lang;
