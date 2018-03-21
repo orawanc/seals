@@ -2,7 +2,7 @@
 namespace Seals\Web;
 
 class Language {
-    public static $lang;
+    public static $lang = "th";
     public static $arrLang;
 
     /**
@@ -29,7 +29,16 @@ class Language {
      * @param {string} @lang
      */
     public static function get ($key,$lang="") {
-        $selectLang = ($lang=="")?self::$lang:$lang;
+        $arrKey = explode(".",$key);
+
+        if (count($arrKey)==2) {
+            if (isset(self::$arrLang[$arrKey[0]][$arrKey[1]])) {
+                return self::$arrLang[$arrKey[0]][$arrKey[1]];
+            }
+            return '';
+        } else {
+            return '';
+        }        
 
     }
 
