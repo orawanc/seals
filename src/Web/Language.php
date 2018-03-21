@@ -6,12 +6,12 @@ class Language {
     public static $arrLang;
 
     /**
-     * init
+     * register
      * 
      * @param {string} $path
      * @param {string} @lang
      */
-    public static function init ($path,$lang) {
+    public static function register ($path,$lang) {
         self::$lang = $lang;
         $files = preg_grep('/\.php$/', scandir($path));
 
